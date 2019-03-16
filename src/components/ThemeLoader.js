@@ -19,29 +19,13 @@ const ThemeLoader = ({ theme }) => {
 
     const css = ':root {' + parseVariables(getThemes()[theme].colors) + '}';
 
-    // MAGIC CREATING <STYLE>-TAG MAY NOT NEEDED
-    // <STYLE>-TAG SHOULD BE A PART OF THE PUBLIC STATIC HTML TEMPLATE
-    const head  = document.head || document.getElementsByTagName('head')[0];
-    const style = document.createElement('style');
     const tag   = document.getElementById('theme');
     const vars  = document.createTextNode(css);
-
-    style.type = 'text/css';
-    style.setAttribute('id', 'theme');
-
-    switch (tag) {
-        case null:
-        case "":
-            // INIT
-            head.appendChild(style);
-            style.appendChild(vars);
-            break;
-        default:
-            // CHANGE
-            tag.removeChild(tag.firstChild);
-            tag.appendChild(vars);
+    if (tag.firstChild) {
+        tag.removeChild(tag.firstChild);
     }
-
+    tag.parentNode.appendChild(tag);
+    tag.appendChild(vars);
 
     // TRIGGER IE PONYFILL WITH SOME OPTIONS
     // WE DON'T NEEDED TO CHECK IF IS AN IE11
@@ -51,8 +35,6 @@ const ThemeLoader = ({ theme }) => {
         onlyLegacy: !(/Edge\/1[56]\./i.test(navigator.userAgent))
     });
 
-    // TODO: DO WE NEED THIS ?
-    // return <sometags></sometags>
     return null;
 };
 
