@@ -1,0 +1,15 @@
+{
+    "name": "colorful",
+    "logo": "",
+    "colors": {
+        "color-layout": "#EAEAEA",
+        "color-secondary": "#d6d6d6",
+        "color-accent": "#F0801B",
+
+        "background-primary": "#121417",
+        "background-secondary": "#2C2E2F",
+
+        "text-primary": "#FFFFFF",
+        "text-regular": "#98C379"
+    }
+}

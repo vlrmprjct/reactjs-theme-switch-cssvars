@@ -1,0 +1,15 @@
+{
+    "name": "dark",
+    "logo": "",
+    "colors": {
+        "color-layout": "#282C34",
+        "color-secondary": "#233142",
+        "color-accent": "#F0801B",
+
+        "background-primary": "#282C34",
+        "background-secondary": "#2C2E2F",
+
+        "text-primary": "#666666",
+        "text-regular": "#EFEFEF"
+    }
+}

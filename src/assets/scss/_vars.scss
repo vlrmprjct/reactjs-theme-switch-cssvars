@@ -1,0 +1,12 @@
+$color-white:       #FFFFFF !default;
+$color-gray1:       #F7F7F7 !default;
+$color-gray2:       #DBDBDB !default;
+$color-gray3:       #9D9D9D !default;
+$color-gray4:       #6F6F6F !default;
+$color-black:       #000000 !default;
+$color-eastbay:     #434E88 !default;
+
+:root {
+    --background-primary: $color-eastbay;
+    --text-primary:       $color-gray1;
+}
