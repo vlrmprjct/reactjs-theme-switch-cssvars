@@ -5,15 +5,8 @@ import './App.scss';
 
 const App = () => {
 
-    // 0: DARK
-    // 1: LIGHT
-    // DARK THEME AS DEFAULT
-    // TODO: ADD USEFUL THEMES NAMES
-    const [theme, setTheme] = useState(0);
-
-    const trigger = () => {
-        setTheme( 1 - theme );
-    };
+    const [theme, setTheme] = useState('light');
+    const trigger = (theme) => setTheme(theme);
 
     return (
         <div className="app">
@@ -24,7 +17,9 @@ const App = () => {
                     <code>Save to reload.</code>
                 </p>
                 <p>
-                    <button onClick={() => trigger()}>Toggle Theme</button>
+                    <button onClick={() => trigger('dark')}>DARK</button>
+                    <button onClick={() => trigger('light')}>LIGHT</button>
+                    <button onClick={() => trigger('colorful')}>COLORFUL</button>
                 </p>
             </header>
         </div>

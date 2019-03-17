@@ -15,9 +15,28 @@ const parseVariables = (style) => {
     );
 }
 
+const getIndexByKeyName = (object, key, value) => {
+
+    // ADD LEGACY IE11 SUPPORT
+    // WITHOUT WRITING PROTOTYPE
+    // TODO: REMOVE IF MS CANCEL IE SUPPORT
+    if (typeof findIndex !== 'function') {
+        for (let index = 0; index < object.length; ++index) {
+            if (object[index][key] === value) {
+                return index;
+            }
+        }
+    }
+
+    return object.findIndex((e) => {
+        return e[key] === value
+    });
+};
+
 const ThemeLoader = ({ theme }) => {
 
-    const css = ':root {' + parseVariables(getThemes()[theme].colors) + '}';
+    const themeIndex = getIndexByKeyName(getThemes(), 'name', theme);
+    const css = ':root {' + parseVariables(getThemes()[themeIndex].colors) + '}';
 
     // MAGIC CREATING <STYLE>-TAG MAY NOT NEEDED
     // <STYLE>-TAG SHOULD BE A PART OF THE PUBLIC STATIC HTML TEMPLATE
@@ -57,7 +76,7 @@ const ThemeLoader = ({ theme }) => {
 };
 
 ThemeLoader.propTypes = {
-    theme: PropTypes.number
+    theme: PropTypes.string
 };
 
 export default ThemeLoader;

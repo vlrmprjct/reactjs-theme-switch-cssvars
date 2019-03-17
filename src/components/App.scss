@@ -24,11 +24,21 @@
 
     button {
         border: 1px solid var(--text-regular);
+        border-radius: 2px;
+        margin: 0 0.25em;
         padding: 0.5em 1em;
         background: no-repeat;
         color: var(--text-regular);
         cursor: pointer;
         outline: none;
+        width: 8em;
+
+        &:hover,
+        &:active,
+        &:focus {
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+        }
     }
 
 }
