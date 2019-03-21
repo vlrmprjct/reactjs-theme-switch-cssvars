@@ -9,11 +9,12 @@ const getThemes = () => {
         .map(filename => _require(filename));
 }
 
-const parseVariables = (style) => {
-    return Object.keys(style || {}).reduce(
-        (index, variable) => `${index} --${variable}: ${style[variable]};`, ''
+const parseVariables = (style = {}) => {
+    return Object.keys(style).reduce(
+        (index, variable) => `${index} --${variable}: ${style[variable]};`,
+        ''
     );
-}
+};
 
 const getIndexByKeyName = (object, key, value) => {
 
@@ -36,7 +37,7 @@ const getIndexByKeyName = (object, key, value) => {
 const ThemeLoader = ({ theme }) => {
 
     const themeIndex = getIndexByKeyName(getThemes(), 'name', theme);
-    const css = ':root {' + parseVariables(getThemes()[themeIndex].colors) + '}';
+    const css = `:root {${parseVariables(getThemes()[themeIndex].colors)}`;
 
     // MAGIC CREATING <STYLE>-TAG MAY NOT NEEDED
     // <STYLE>-TAG SHOULD BE A PART OF THE PUBLIC STATIC HTML TEMPLATE
