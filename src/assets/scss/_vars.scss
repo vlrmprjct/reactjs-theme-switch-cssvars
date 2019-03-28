@@ -7,6 +7,10 @@ $color-black:       #000000 !default;
 $color-eastbay:     #434E88 !default;
 
 :root {
-    --background-primary: $color-eastbay;
-    --text-primary:       $color-gray1;
+    --background-primary: #{$color-eastbay};
+    --text-primary:       #{$color-gray1};
+}
+
+body {
+    color: var(--text-primary);
 }

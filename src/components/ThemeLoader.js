@@ -37,7 +37,7 @@ const getIndexByKeyName = (object, key, value) => {
 const ThemeLoader = ({ theme }) => {
 
     const themeIndex = getIndexByKeyName(getThemes(), 'name', theme);
-    const css = `:root {${parseVariables(getThemes()[themeIndex].colors)}`;
+    const css = `:root {${parseVariables(getThemes()[themeIndex].colors)}}`;
 
     // MAGIC CREATING <STYLE>-TAG MAY NOT NEEDED
     // <STYLE>-TAG SHOULD BE A PART OF THE PUBLIC STATIC HTML TEMPLATE
@@ -68,6 +68,7 @@ const ThemeLoader = ({ theme }) => {
     // THIS IS A PART OF PONYFILL
     cssVars({
         silent: true,
+        onlyVars: true,
         onlyLegacy: !(/Edge\/1[56]\./i.test(navigator.userAgent))
     });
 
